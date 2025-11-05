@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Rise in Depression — Caleb Abbe (Images + Scroll Fade)</title>
+  <title>Rise in Depression — Caleb Abbe</title>
   <style>
-    /**********************************
-     * Theme & layout variables (kept from prior)
-     **********************************/
+    /* =========================
+       Theme & base variables
+       ========================= */
     :root{
       --bg: #fffaf5;
       --text: #1b1208;
@@ -20,49 +20,39 @@
       --radius: 10px;
       --shadow: 0 8px 30px rgba(0,0,0,0.06);
     }
-    /* (All theme definitions are unchanged from previous version) */
-    :root[data-theme="warm"]{ --bg:#fffaf5; --text:#1b1208; --muted:#5b4b3a; --accent:#a66b2a; --accent-2:#6cc3b8; --card:#fff5ea; --font:var(--font); --radius:10px; --shadow:0 8px 30px rgba(0,0,0,0.06);}
-    :root[data-theme="cool"]{ --bg:#f6fbff; --text:#032033; --muted:#4b6b7a; --accent:#3b82f6; --accent-2:#00c2a8; --card:#f2fbff; --font:"Nunito",system-ui; --radius:12px; --shadow:0 10px 36px rgba(20,60,90,0.06);}
-    :root[data-theme="dark"]{ --bg:#0b0d10; --text:#e7eef6; --muted:#9aaebb; --accent:#7dd3fc; --accent-2:#6ee7b7; --card:#081014; --font:var(--font); --radius:8px; --shadow:0 12px 40px rgba(0,0,0,0.6);}
-    :root[data-theme="contrast"]{ --bg:#ffffff; --text:#000000; --muted:#333333; --accent:#ff5b00; --accent-2:#00c2a8; --card:#ffffff; --font:Arial; --radius:4px; --shadow:none;}
-    :root[data-theme="pastel"]{ --bg:#fffbff; --text:#1e1b2e; --muted:#746b7a; --accent:#c89ad6; --accent-2:#9ad3bc; --card:#fff7ff; --font:"Poppins",system-ui; --radius:16px; --shadow:0 6px 18px rgba(120,90,140,0.06);}
-    :root[data-theme="sunset"]{ --bg:#fff2ee; --text:#2b150f; --muted:#6e4b43; --accent:#ff6f59; --accent-2:#ffb87a; --card:#fff6f4; --font:"Merriweather",Georgia,serif; --radius:14px; --shadow:0 10px 30px rgba(200,100,80,0.08);}
-    :root[data-theme="forest"]{ --bg:#f4fbf7; --text:#072014; --muted:#3c6b4f; --accent:#2f9b57; --accent-2:#6bd3a6; --card:#f0fbf5; --font:Georgia,serif; --radius:12px; --shadow:0 8px 28px rgba(20,60,40,0.06);}
-    :root[data-theme="ocean"]{ --bg:#f2fbff; --text:#04232c; --muted:#3b6f7a; --accent:#0b82c2; --accent-2:#00b5d8; --card:#f3fbff; --font:"Nunito",system-ui; --radius:10px; --shadow:0 12px 34px rgba(4,60,80,0.06);}
-    :root[data-theme="neon"]{ --bg:#05050a; --text:#e8f5ff; --muted:#9fb8ff; --accent:#ff2d95; --accent-2:#14f195; --card:#0b0610; --font:"Orbitron",system-ui; --radius:6px; --shadow:0 0 30px rgba(255,30,120,0.06);}
-    :root[data-theme="mono"]{ --bg:#ffffff; --text:#0a0a0a; --muted:#666666; --accent:#222222; --accent-2:#888888; --card:#ffffff; --font:"Helvetica Neue",Arial,sans-serif; --radius:6px; --shadow:0 6px 18px rgba(0,0,0,0.04);}
-    :root[data-theme="vintage"]{ --bg:#faf6ef; --text:#2b2317; --muted:#7c6a55; --accent:#c17b3a; --accent-2:#9b5b3a; --card:#fbf3e8; --font:"Libre Baskerville",Georgia,serif; --radius:14px; --shadow:0 8px 26px rgba(80,60,40,0.06);}
-    :root[data-theme="cyber"]{ --bg:#0b0d14; --text:#e6f6ff; --muted:#9bb7d1; --accent:#ff3bf6; --accent-2:#00f0ff; --card:#081018; --font:"Orbitron",system-ui; --radius:8px; --shadow:0 12px 40px rgba(0,200,255,0.06);}
-    :root[data-theme="minimal"]{ --bg:#ffffff; --text:#111111; --muted:#666666; --accent:#1f6feb; --accent-2:#10b981; --card:#ffffff; --font:var(--font); --radius:6px; --shadow:none;}
-    :root[data-theme="highcontrast2"]{ --bg:#000000; --text:#ffffff; --muted:#cccccc; --accent:#ffff00; --accent-2:#00ff00; --card:#000000; --font:"Arial Black","Segoe UI Black",system-ui; --radius:2px; --shadow:none;}
-    :root[data-theme="sunrise-animated"]{ --bg: linear-gradient(120deg,#fff1e0,#ffe7d6 30%,#ffecd1 60%, #fff9f0); --text:#2a1208; --muted:#6f4b3a; --accent:#ff8166; --accent-2:#ffd07a; --card: rgba(255,245,235,0.9); --panel-border: rgba(0,0,0,0.04);}
-    :root[data-theme="marble-animated"]{ --bg: linear-gradient(180deg,#fbfbfd,#f4f6fb); --text:#0f1220; --muted:#6b6f82; --accent:#7ba8e6; --accent-2:#a6d0c6; --card:#f7f9fc; --panel-border: rgba(0,0,0,0.03);}
-    :root[data-theme="gradient-animated"]{ --bg: linear-gradient(90deg,#f7f1ff,#e8fff7,#fff6e8); --text:#20182b; --muted:#6e6576; --accent:#a16cf6; --accent-2:#5fe3c0; --card:#fff7ff; --panel-border: rgba(0,0,0,0.03);}
 
-    /* animated classes (kept & used by JS) */
+    /* Small selection of themes (kept simple) */
+    :root[data-theme="warm"]{ --bg:#fffaf5; --text:#1b1208; --muted:#5b4b3a; --accent:#a66b2a; --accent-2:#6cc3b8; --card:#fff5ea; --font:var(--font); }
+    :root[data-theme="cool"]{ --bg:#f6fbff; --text:#032033; --muted:#4b6b7a; --accent:#3b82f6; --accent-2:#00c2a8; --card:#f2fbff; }
+    :root[data-theme="dark"]{ --bg:#0b0d10; --text:#e7eef6; --muted:#9aaebb; --accent:#7dd3fc; --accent-2:#6ee7b7; --card:#081014; }
+    :root[data-theme="pastel"]{ --bg:#fffbff; --text:#1e1b2e; --muted:#746b7a; --accent:#c89ad6; --accent-2:#9ad3bc; --card:#fff7ff; }
+    :root[data-theme="sunrise-animated"]{ --bg: linear-gradient(120deg,#fff1e0,#ffe7d6 30%,#ffecd1 60%, #fff9f0); --accent:#ff8166; --accent-2:#ffd07a; }
+
+    /* =========================
+       Animation classes
+       ========================= */
     .anim-sunrise { animation: bg-sunrise 12s linear infinite; background-size: 300% 300%; }
     @keyframes bg-sunrise { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
-    .anim-marble { animation: marble-shift 16s ease-in-out infinite; }
-    @keyframes marble-shift { 0%{background-position:0% 0%}50%{background-position:40% 60%;transform:translateY(1px)}100%{background-position:0% 0%} }
-    .anim-gradient { animation: gradient-shift 10s ease-in-out infinite; }
-    @keyframes gradient-shift { 0%{background-position:0% 50%}50%{background-position:100% 50%;filter:saturate(1.02)}100%{background-position:0% 50%} }
-    .anim-cyber .panel,.anim-cyber .num-card{box-shadow:0 0 20px rgba(255,0,200,0.06); animation:neonPulse 2.2s infinite;}
-    @keyframes neonPulse { 0%{box-shadow:0 0 4px rgba(255,0,200,0.05);transform:translateY(0)}50%{box-shadow:0 0 26px rgba(0,240,255,0.12);transform:translateY(-2px)}100%{box-shadow:0 0 4px rgba(255,0,200,0.05);transform:translateY(0)} }
-    .anim-ocean:after{ content:""; position:fixed; left:0; right:0; top:0; height:60px; pointer-events:none; animation:wave-move 14s linear infinite; opacity:.7; mix-blend-mode:overlay;}
-    @keyframes wave-move { 0%{transform:translateX(0) translateY(0)}50%{transform:translateX(-40px) translateY(4px)}100%{transform:translateX(0) translateY(0)} }
 
-    /**********************************
-     * Base layout (kept)
-     **********************************/
+    .anim-marble { animation: marble-shift 16s ease-in-out infinite; }
+    @keyframes marble-shift { 0%{background-position:0% 0%}50%{background-position:40% 60%}100%{background-position:0% 0%} }
+
+    .anim-gradient { animation: gradient-shift 10s ease-in-out infinite; }
+    @keyframes gradient-shift { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+
+    /* =========================
+       Reset + layout
+       ========================= */
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
     .page{max-width:980px;margin:48px auto;padding:22px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:var(--radius);background:var(--card);border:1px solid var(--panel-border);box-shadow:var(--shadow);position:relative}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;background:var(--card);border:1px solid var(--panel-border);box-shadow:var(--shadow)}
     .title{font-size:16px;font-weight:700}
     .meta{font-size:13px;color:var(--muted)}
     .controls{display:flex;gap:8px;align-items:center}
     select{padding:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:white;font-size:14px}
 
+    /* MLA header fixed (stays put, won't overlap content) */
     .mla{position:fixed;left:14px;top:14px;background:var(--card);padding:10px 12px;border-radius:10px;border:1px solid var(--panel-border);font-size:13px;z-index:130;box-shadow:var(--shadow)}
     .mla b{display:block;color:var(--text)}
 
@@ -70,12 +60,11 @@
     h1{margin:14px 0 6px}
     .lead{color:var(--muted);margin-bottom:14px}
 
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.5), transparent);border-radius:calc(var(--radius));padding:14px;border:1px solid var(--panel-border);display:flex;flex-direction:column;gap:12px;transition:transform .28s ease, box-shadow .28s ease}
-    .panel:hover{transform:translateY(-4px)}
+    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.5), transparent);border-radius:10px;padding:14px;border:1px solid var(--panel-border);display:flex;flex-direction:column;gap:12px}
     .summary{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
     @media (max-width:880px){.summary{grid-template-columns:1fr}}
-    .center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
 
+    .center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
     .svg-wrap{width:220px;height:220px;display:grid;place-items:center;border-radius:12px;background:rgba(0,0,0,0.02);padding:12px;margin:0 auto;overflow:visible}
     .svg-inline{width:100%;height:100%}
 
@@ -83,21 +72,21 @@
     .bar{width:72px;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:800}
     .bar-label{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
 
-    /* --- essay blocks layout adjustments to allow left images --- */
+    /* =========================
+       Essay layout with left images
+       ========================= */
     .essay-block{display:flex;gap:20px;margin:22px 0;align-items:flex-start}
-    /* default (when no image) keeps original behavior */
-    .essay-block .essay-text{flex:1}
-    .essay-text p{margin:8px 0;color:var(--muted);line-height:1.6;}
-
-    /* 2-column: image + text */
+    /* If an image is present and we want image+text */
     .essay-block.two-col{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
-    /* 3-column: image + text + chart */
     .essay-block.three-col{display:grid;grid-template-columns:220px 1fr 260px;gap:20px;align-items:start}
 
     .essay-img img{width:100%;height:auto;border-radius:12px;object-fit:cover;display:block;box-shadow:0 8px 22px rgba(0,0,0,0.08)}
+    .essay-text{flex:1}
+    .essay-text p{margin:8px 0;color:var(--muted);line-height:1.6;}
+
     .chart-column{width:260px;min-width:220px;display:flex;flex-direction:column;align-items:center;gap:10px}
 
-    .num-card{background:var(--card);padding:10px;border-radius:calc(var(--radius));border:1px solid var(--panel-border);text-align:center;width:140px;box-shadow:var(--shadow)}
+    .num-card{background:var(--card);padding:10px;border-radius:10px;border:1px solid var(--panel-border);text-align:center;width:140px;box-shadow:var(--shadow)}
     .num-big{font-weight:800;font-size:20px}
     .num-label{font-size:13px;color:var(--muted)}
 
@@ -118,14 +107,15 @@
     .ring { transform: rotate(-90deg); }
     .ring circle { transition: stroke-dashoffset .9s cubic-bezier(.2,.9,.3,1); transform-origin:50% 50%; }
 
-    /* --- scroll fade effect styles --- */
-    .fade-on-scroll{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease;will-change:opacity,transform}
+    /* fade-on-scroll */
+    .fade-on-scroll{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
     .fade-on-scroll.visible{opacity:1;transform:none}
 
     @media (max-width:760px){
       .essay-block.two-col, .essay-block.three-col{display:block}
       .essay-img img{width:100%;margin-bottom:12px}
       .chart-column{width:100%;min-width:unset}
+      .svg-wrap{width:180px;height:180px}
     }
   </style>
 </head>
@@ -141,7 +131,7 @@
     <header aria-label="Site header">
       <div>
         <div class="title">Rise in Depression and Other Mental Illnesses</div>
-        <div class="meta">My class project — visuals only for the numbers I gave</div>
+        <div class="meta">Caleb Abbe</div>
       </div>
 
       <div class="controls">
@@ -161,9 +151,9 @@
 
           <option value="vintage">Vintage</option>
           <option value="cyber">Cyberpunk</option>
-          <option value="sunrise-animated">Sunrise (animated)</option>
-          <option value="marble-animated">Marble (animated)</option>
-          <option value="gradient-animated">Gradient (animated)</option>
+          <option value="sunrise-animated">Sunrise</option>
+          <option value="marble-animated">Marble</option>
+          <option value="gradient-animated">Gradient</option>
 
           <option value="minimal">Minimal</option>
           <option value="highcontrast2">High Contrast 2</option>
@@ -173,37 +163,47 @@
 
     <main>
       <h1>Data</h1>
-      <p class="lead">I made charts only for the numbers you gave. Amounts = pies out of world population (8.1B), percents = hollow donuts, 1-in-X = little people row with one colored.</p>
+      <p class="lead">Visualized info</p>
 
-      <!-- SUMMARY (kept) -->
+      <!-- SUMMARY -->
       <section class="summary fade-on-scroll" aria-label="Summary infographics">
         <div class="panel center">
           <h3 id="global-title">Global & Depression Totals</h3>
-          <div class="svg-wrap">
-            <svg viewBox="0 0 220 220" class="svg-inline" role="img" aria-label="1 billion out of 8.1 billion">
-              <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+
+          <!-- Pie for 1B out of 8.1B (data-percent used by JS) -->
+          <div class="svg-wrap" aria-hidden="false">
+            <svg viewBox="0 0 220 220" class="svg-inline" role="img" aria-label="1 billion out of 8.1 billion" data-percent="12.345679">
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1">
+                  <stop offset="0" stop-color="var(--accent)"/>
+                  <stop offset="1" stop-color="var(--accent-2)"/>
+                </linearGradient>
+              </defs>
               <g transform="translate(110,110)">
                 <circle r="90" fill="#f7f7f7"></circle>
                 <circle r="70" fill="none" stroke="#eee" stroke-width="80"></circle>
-                <circle class="ring" r="70" fill="none" stroke="url(#g1)" stroke-width="80" stroke-dasharray="439.82" stroke-dashoffset="439.82"></circle>
+                <!-- ring circle uses r attribute and class 'ring' to be detected -->
+                <circle class="ring" r="70" fill="none" stroke="url(#g1)" stroke-width="80"></circle>
                 <text x="0" y="-6" font-size="18" text-anchor="middle" fill="var(--text)" font-weight="700">1B</text>
-                <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">of 8.1B (≈12.35%)</text>
+                <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">12.35%</text>
               </g>
             </svg>
           </div>
 
-          <div style="display:flex;gap:12px;margin-top:6px;justify-content:center">
+          <div style="display:flex;gap:12px;margin-top:6px;justify-content:center;align-items:center">
             <div class="num-card" title="280 million out of 8.1 billion">
               <div class="num-big">280M</div>
-              <div class="num-label">depression</div>
+              <div class="num-label">with depression</div>
             </div>
+
+            <!-- Pie for 280M: data-percent set in svg -->
             <div class="svg-wrap" style="width:120px;height:120px">
-              <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="280 million out of 8.1 billion (pie)">
+              <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="280 million out of 8.1 billion (pie)" data-percent="3.45679">
                 <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
                 <g transform="translate(60,60)">
                   <circle r="46" fill="#fff"></circle>
                   <circle r="46" fill="none" stroke="#eee" stroke-width="28"></circle>
-                  <circle class="ring" r="46" fill="none" stroke="url(#g2)" stroke-width="28" stroke-dasharray="289.03" stroke-dashoffset="289.03"></circle>
+                  <circle class="ring" r="46" fill="none" stroke="url(#g2)" stroke-width="28"></circle>
                   <text x="0" y="4" font-size="12" text-anchor="middle" fill="var(--text)" font-weight="700">3.46%</text>
                 </g>
               </svg>
@@ -240,12 +240,13 @@
 
             <div style="margin-top:16px;text-align:center">
               <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Almost half of adults do not get treated</div>
+              <!-- hollow donut: percent read from text or data-percent -->
               <div class="hollow" role="img" aria-label="50 percent untreated">
-                <svg viewBox="0 0 120 120" class="svg-inline">
+                <svg viewBox="0 0 120 120" class="svg-inline" data-percent="50">
                   <g transform="translate(60,60)">
                     <circle r="44" fill="none" stroke="#eee" stroke-width="18"></circle>
-                    <circle class="ring" r="44" fill="none" stroke="var(--accent)" stroke-width="18" stroke-dasharray="275.57" stroke-dashoffset="275.57"></circle>
-                    <text x="0" y="6" text-anchor="middle" font-weight="700" fill="var(--text)">50%</text>
+                    <circle class="ring" r="44" fill="none" stroke="var(--accent)" stroke-width="18"></circle>
+                    <text x="0" y="6" font-weight="700" fill="var(--text)" text-anchor="middle">50%</text>
                   </g>
                 </svg>
               </div>
@@ -254,11 +255,11 @@
             <div style="margin-top:12px;text-align:center">
               <div style="font-size:13px;color:var(--muted);margin-bottom:6px">~1 out of 3 U.S. counties have no provider</div>
               <div class="hollow" role="img" aria-label="33 percent counties without providers">
-                <svg viewBox="0 0 120 120" class="svg-inline">
+                <svg viewBox="0 0 120 120" class="svg-inline" data-percent="33">
                   <g transform="translate(60,60)">
                     <circle r="44" fill="none" stroke="#eee" stroke-width="18"></circle>
-                    <circle class="ring" r="44" fill="none" stroke="var(--accent-2)" stroke-width="18" stroke-dasharray="275.57" stroke-dashoffset="275.57"></circle>
-                    <text x="0" y="6" text-anchor="middle" font-weight="700" fill="var(--text)">33%</text>
+                    <circle class="ring" r="44" fill="none" stroke="var(--accent-2)" stroke-width="18"></circle>
+                    <text x="0" y="6" font-weight="700" fill="var(--text)" text-anchor="middle">33%</text>
                   </g>
                 </svg>
               </div>
@@ -268,7 +269,7 @@
         </div>
       </section>
 
-      <!-- PANDEMIC (kept) -->
+      <!-- PANDEMIC -->
       <section class="panel fade-on-scroll" aria-label="Pandemic and impacts">
         <h3>Pandemic effect & impact metrics</h3>
 
@@ -304,11 +305,11 @@
             <div style="text-align:center">
               <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Reported severe loneliness</div>
               <div class="hollow">
-                <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="21 percent loneliness">
+                <svg viewBox="0 0 120 120" class="svg-inline" data-percent="21">
                   <g transform="translate(60,60)">
                     <circle r="44" fill="none" stroke="#eee" stroke-width="18"></circle>
-                    <circle class="ring" r="44" fill="none" stroke="var(--accent)" stroke-width="18" stroke-dasharray="275.57" stroke-dashoffset="275.57"></circle>
-                    <text x="0" y="6" text-anchor="middle" font-weight="700" fill="var(--text)">21%</text>
+                    <circle class="ring" r="44" fill="none" stroke="var(--accent)" stroke-width="18"></circle>
+                    <text x="0" y="6" font-weight="700" fill="var(--text)" text-anchor="middle">21%</text>
                   </g>
                 </svg>
               </div>
@@ -324,7 +325,7 @@
 
       <h2 style="margin-top:26px">Essay</h2>
 
-      <!-- A: add head made of color wires image to the LEFT; keep right chart -->
+      <!-- SECTION A: image (head of color wires) + text + chart -->
       <div class="essay-block three-col fade-on-scroll" id="A">
         <div class="essay-img">
           <img src="https://images.unsplash.com/photo-1710322144652-bcea73280334?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWVudGFsJTIwaGVhbHRofGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600" alt=""/>
@@ -337,14 +338,14 @@
 
         <div class="chart-column">
           <div class="svg-wrap" style="height:180px">
-            <svg viewBox="0 0 200 200" class="svg-inline" role="img" aria-label="1 billion out of 8.1 billion (pie)">
+            <svg viewBox="0 0 200 200" class="svg-inline" role="img" data-percent="12.345679" aria-label="1 billion out of 8.1 billion (pie)">
               <defs><linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
               <g transform="translate(100,100)">
                 <circle r="72" fill="#fff"></circle>
                 <circle r="72" fill="none" stroke="#eee" stroke-width="36"></circle>
-                <circle class="ring" r="72" fill="none" stroke="url(#gA)" stroke-width="36" stroke-dasharray="452.39" stroke-dashoffset="452.39"></circle>
+                <circle class="ring" r="72" fill="none" stroke="url(#gA)" stroke-width="36"></circle>
                 <text x="0" y="-6" font-size="18" text-anchor="middle" fill="var(--text)" font-weight="700">1B</text>
-                <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">of 8.1B ≈ 12.35%</text>
+                <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">12.35%</text>
               </g>
             </svg>
           </div>
@@ -352,11 +353,11 @@
           <div style="display:flex;gap:8px">
             <div class="num-card"><div class="num-big">280M</div><div class="num-label">depression</div></div>
             <div class="svg-wrap" style="width:110px;height:110px">
-              <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="280 million out of 8.1 billion">
+              <svg viewBox="0 0 120 120" class="svg-inline" data-percent="3.45679" aria-label="280 million out of 8.1 billion">
                 <g transform="translate(60,60)">
                   <circle r="46" fill="#fff"></circle>
                   <circle r="46" fill="none" stroke="#eee" stroke-width="28"></circle>
-                  <circle class="ring" r="46" fill="none" stroke="url(#gA)" stroke-width="28" stroke-dasharray="289.03" stroke-dashoffset="289.03"></circle>
+                  <circle class="ring" r="46" fill="none" stroke="url(#gA)" stroke-width="28"></circle>
                   <text x="0" y="4" font-size="11" text-anchor="middle" fill="var(--text)" font-weight="700">3.46%</text>
                 </g>
               </svg>
@@ -365,8 +366,13 @@
         </div>
       </div>
 
-      <!-- B left unchanged (no image assigned) -->
-      <div class="essay-block fade-on-scroll" id="B">
+      <!-- SECTION B: new image you provided + text + small charts for 1-in facts -->
+      <div class="essay-block three-col fade-on-scroll" id="B">
+        <div class="essay-img">
+          <!-- NEW image (user provided) -->
+          <img src="https://images.unsplash.com/photo-1624024946645-d02c208b1c4d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEwfHxtZW50YWwlMjBoZWFsdGh8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt=""/>
+        </div>
+
         <div class="essay-text">
           <p>About 1 in every 5 adults suffers from any mental illness in the United States, and 1 in every 6 people suffer from depression.</p>
         </div>
@@ -375,7 +381,11 @@
           <div style="text-align:center">
             <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 5 (any mental illness)</div>
             <div class="people-row" aria-hidden="true">
-              <span class="person on"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span>
+              <span class="person on"></span>
+              <span class="person"></span>
+              <span class="person"></span>
+              <span class="person"></span>
+              <span class="person"></span>
             </div>
           </div>
 
@@ -384,20 +394,25 @@
           <div style="text-align:center">
             <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 6 (depression)</div>
             <div class="people-row" aria-hidden="true">
-              <span class="person on"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span>
+              <span class="person on"></span>
+              <span class="person"></span>
+              <span class="person"></span>
+              <span class="person"></span>
+              <span class="person"></span>
+              <span class="person"></span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- C unchanged (no image) -->
+      <!-- SECTION C (unchanged paragraph, no image) -->
       <div class="essay-block fade-on-scroll" id="C">
         <div class="essay-text">
           <p>These are big numbers. They show us that mental illness is not just a person's problem. It happens to families, and in schools, and communities. The pandemic has made this a whole lot worse. To help this we need more real solutions like expanded school and community counseling, increased tele therapy, and more public awareness, so people know how to get help.</p>
         </div>
       </div>
 
-      <!-- D: someone sitting depressed (image) on the left -->
+      <!-- SECTION D: image (someone sitting depressed) + text -->
       <div class="essay-block two-col fade-on-scroll" id="D">
         <div class="essay-img">
           <img src="https://images.unsplash.com/photo-1523495338267-31cbca7759e2?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1lbnRhbCUyMGhlYWx0aHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt=""/>
@@ -408,7 +423,7 @@
         </div>
       </div>
 
-      <!-- E unchanged -->
+      <!-- SECTION E -->
       <div class="essay-block fade-on-scroll" id="E">
         <div class="essay-text">
           <p>That much time alone is very hard, especially for young kids who are still learning how to deal with stress. Social media was the biggest way that young people stayed in touch with each other. The overuse of social media can make people feel lonely, compare themselves with others, and be exposed to inappropriate content. All this combined led to bigger problems of depression and anxiety.</p>
@@ -420,7 +435,7 @@
         </div>
       </div>
 
-      <!-- F: brain neon wires (image) left + percent chart -->
+      <!-- SECTION F: neon-brain image + text + 25% chart -->
       <div class="essay-block three-col fade-on-scroll" id="F">
         <div class="essay-img">
           <img src="https://plus.unsplash.com/premium_photo-1692504792692-58c79c296b08?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fG1lbnRhbCUyMGhlYWx0aHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600" alt=""/>
@@ -439,7 +454,7 @@
         </div>
       </div>
 
-      <!-- G: grayscale tree + person (image) left -->
+      <!-- SECTION G: grayscale tree image + text -->
       <div class="essay-block two-col fade-on-scroll" id="G">
         <div class="essay-img">
           <img src="https://images.unsplash.com/photo-1537458946910-d0a4db08b4dd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGRlcHJlc3Npb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt=""/>
@@ -450,19 +465,19 @@
         </div>
       </div>
 
-      <!-- H unchanged (chart present) -->
+      <!-- SECTION H: provider deserts (chart) -->
       <div class="essay-block three-col fade-on-scroll" id="H">
         <div class="essay-text">
           <p>That is because therapy costs too much or there is no practitioner in their community. One out of every three U.S. counties, actually, has no licensed counselor, psychiatrist, or psychologist. This shows that people in rural or poor communities usually have nowhere to turn.</p>
         </div>
 
         <div class="chart-column">
-          <div class="hollow">
-            <svg viewBox="0 0 120 120" class="svg-inline">
+          <div class="hollow" aria-hidden="true">
+            <svg viewBox="0 0 120 120" class="svg-inline" data-percent="33">
               <g transform="translate(60,60)">
                 <circle r="44" fill="none" stroke="#eee" stroke-width="18"></circle>
-                <circle class="ring" r="44" fill="none" stroke="var(--accent-2)" stroke-width="18" stroke-dasharray="275.57" stroke-dashoffset="275.57"></circle>
-                <text x="0" y="6" text-anchor="middle" font-weight="700" fill="var(--text)">33%</text>
+                <circle class="ring" r="44" fill="none" stroke="var(--accent-2)" stroke-width="18"></circle>
+                <text x="0" y="6" font-weight="700" fill="var(--text)" text-anchor="middle">33%</text>
               </g>
             </svg>
           </div>
@@ -470,7 +485,7 @@
         </div>
       </div>
 
-      <!-- I unchanged -->
+      <!-- SECTION I: economics -->
       <div class="essay-block fade-on-scroll" id="I">
         <div class="essay-text">
           <p>Also, mental illness reduces people's ability to work and inhibits learning. The economy takes a massive loss, over a trillion dollars each year, because of people not showing up to work or being unable to perform as best they can in their profession. These facts explain how mental illness injures people emotionally while financially impacting society.</p>
@@ -482,7 +497,7 @@
         </div>
       </div>
 
-      <!-- J: hand giving black paper heart image left -->
+      <!-- SECTION J: hand giving black paper heart image -->
       <div class="essay-block two-col fade-on-scroll" id="J">
         <div class="essay-img">
           <img src="https://images.unsplash.com/photo-1579208575657-c595a05383b7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170" alt=""/>
@@ -493,8 +508,8 @@
         </div>
       </div>
 
-      <!-- K: therapy session image left -->
-      <div class="essay-block two-col fade-on-scroll" id="K">
+      <!-- SECTION K: therapy session image + text + teletherapy card -->
+      <div class="essay-block three-col fade-on-scroll" id="K">
         <div class="essay-img">
           <img src="https://images.unsplash.com/photo-1551847677-dc82d764e1eb?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGhlcmFweSUyMHNlc3Npb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600" alt=""/>
         </div>
@@ -509,7 +524,7 @@
         </div>
       </div>
 
-      <!-- Works Cited (unchanged) -->
+      <!-- Works Cited -->
       <section class="works-cited fade-on-scroll" aria-labelledby="wc-h">
         <h3 id="wc-h">Works Cited</h3>
         <ol>
@@ -527,48 +542,51 @@
   </div>
 
   <script>
-    /* Theme application + animated-class handling (unchanged behavior) */
+    /* ----------------------------
+       Theme init (keeps previous behavior)
+       ---------------------------- */
     (function(){
       const sel = document.getElementById('theme');
-      const saved = localStorage.getItem('caleb_theme_v5') || 'warm';
-      const animatedMap = {'sunrise-animated':'anim-sunrise','marble-animated':'anim-marble','gradient-animated':'anim-gradient','cyber':'anim-cyber','ocean':'anim-ocean'};
+      const saved = localStorage.getItem('caleb_theme_v6') || 'warm';
       function applyTheme(t){
-        if(!t) t='warm';
-        document.documentElement.setAttribute('data-theme', t === 'warm' ? 'warm' : t);
+        if(!t) t = 'warm';
+        document.documentElement.setAttribute('data-theme', t);
         document.body.classList.remove('anim-sunrise','anim-marble','anim-gradient','anim-cyber','anim-ocean');
-        const cls = animatedMap[t];
-        if(cls) document.body.classList.add(cls);
-        const header = document.querySelector('header');
-        const existing = header.querySelector('.theme-accent');
-        if(existing) existing.remove();
-        if(t === 'sunrise-animated'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent');
-          svg.setAttribute('width','120'); svg.setAttribute('height','48'); svg.setAttribute('viewBox','0 0 120 48');
-          svg.innerHTML = `<defs><linearGradient id="sunG" x1="0" x2="1"><stop offset="0" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()}" /><stop offset="1" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()}" /></linearGradient></defs><g transform="translate(0,0)"><circle cx="24" cy="24" r="10" fill="url(#sunG)"><animate attributeName="cy" values="24;18;24" dur="6s" repeatCount="indefinite"></animate><animate attributeName="r" values="10;12;10" dur="6s" repeatCount="indefinite"></animate></circle><rect x="46" y="18" width="68" height="8" rx="4" fill="rgba(0,0,0,0.03)"></rect></g>`;
-          svg.style.marginLeft = '12px';
-          header.appendChild(svg);
-        } else if(t === 'ocean'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent'); svg.setAttribute('width','160'); svg.setAttribute('height','48'); svg.setAttribute('viewBox','0 0 160 48');
-          svg.innerHTML = `<g transform="translate(0,0)"><path d="M0 34 Q20 22 40 34 T80 34 T120 34 T160 34 V48 H0 Z" fill="${getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()}" opacity="0.12"><animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; -10 0; 0 0" dur="6s" repeatCount="indefinite"/></path></g>`;
-          svg.style.marginLeft = '12px'; header.appendChild(svg);
-        } else if(t === 'cyber'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent'); svg.setAttribute('width','120'); svg.setAttribute('height','48'); svg.setAttribute('viewBox','0 0 120 48');
-          svg.innerHTML = `<g><rect x="0" y="8" width="120" height="32" rx="6" fill="rgba(255,255,255,0.02)"></rect></g>`;
-          svg.style.marginLeft = '12px'; header.appendChild(svg);
-        }
+        if(t === 'sunrise-animated') document.body.classList.add('anim-sunrise');
+        if(t === 'marble-animated') document.body.classList.add('anim-marble');
+        if(t === 'gradient-animated') document.body.classList.add('anim-gradient');
       }
       sel.value = saved;
       applyTheme(saved);
-      sel.addEventListener('change', function(e){ const v = e.target.value; applyTheme(v); localStorage.setItem('caleb_theme_v5', v); });
+      sel.addEventListener('change', e => { applyTheme(e.target.value); localStorage.setItem('caleb_theme_v6', e.target.value); });
     })();
 
-    /* ring stroke animations and numeric geometry (same as before) */
+    /* ----------------------------
+       SVG ring/pie setup (robust)
+       - Finds each .ring circle, reads its 'r' and percent,
+         then computes stroke-dasharray/dashoffset reliably.
+       - Percent is taken from:
+         1) data-percent on the nearest svg
+         2) text content in the svg (e.g., "50%")
+         3) fallback for specific known values
+       ---------------------------- */
     (function(){
-      function setRing(circleEl, r, percent){
-        if(!circleEl) return;
+      function parsePercentFromSvg(svgEl){
+        if(!svgEl) return null;
+        if(svgEl.dataset && svgEl.dataset.percent){
+          const v = parseFloat(svgEl.dataset.percent);
+          return isNaN(v) ? null : v;
+        }
+        // try to find a <text> that contains a number + %
+        const txt = svgEl.querySelector('text');
+        if(txt){
+          const m = txt.textContent.match(/(\d+(\.\d+)?)\s*%/);
+          if(m) return parseFloat(m[1]);
+        }
+        return null;
+      }
+
+      function setRingParams(circleEl, r, percent){
         const circ = 2 * Math.PI * r;
         const filled = circ * (percent / 100);
         const dashArray = circ;
@@ -576,23 +594,65 @@
         circleEl.setAttribute('stroke-dasharray', String(dashArray));
         circleEl.setAttribute('stroke-dashoffset', String(dashOffset));
       }
-      try {
-        const pct280 = (280 / 8100) * 100;
-        const pct1B = (1000 / 8100) * 100;
-        const smallRings = Array.from(document.querySelectorAll('svg[aria-label*="280 million"] .ring'));
-        smallRings.forEach(r => setRing(r, 46, pct280));
-        const bigRings = Array.from(document.querySelectorAll('svg[aria-label*="1 billion"] .ring'));
-        bigRings.forEach(r => setRing(r, 70, pct1B));
-        // animate rings
-        document.querySelectorAll('.ring').forEach((el, i)=>{
-          el.style.transition = 'stroke-dashoffset .9s cubic-bezier(.2,.9,.3,1), transform .6s ease';
-          setTimeout(()=> el.style.transform = 'scale(1.02)', 80 + i*40);
-          setTimeout(()=> el.style.transform = 'none', 700 + i*40);
-        });
-      } catch(e){ console.warn(e) }
+
+      // iterate all circles with class 'ring'
+      document.querySelectorAll('circle.ring').forEach(circle => {
+        const rAttr = circle.getAttribute('r');
+        const r = rAttr ? parseFloat(rAttr) : null;
+        if(!r) return;
+        // find closest svg ancestor
+        const svg = circle.closest('svg');
+        let percent = parsePercentFromSvg(svg);
+        // fallback routes (some pies are amounts; svg dataset had percent already)
+        // if no percent and aria-label contains numbers we can attempt some specific parsing
+        if(percent === null){
+          // check svg aria-label for numeric patterns like "1 billion out of 8.1"
+          const label = svg.getAttribute('aria-label') || '';
+          const m = label.match(/([\d.]+)\s*(billion|million)?\s*out\s*of\s*([\d.]+)\s*(billion|million|B)?/i);
+          if(m){
+            // convert values to numbers (rough)
+            const a = parseFloat(m[1]);
+            const aunit = (m[2]||'').toLowerCase();
+            const b = parseFloat(m[3]);
+            const bunit = (m[4]||'').toLowerCase();
+            function toNumber(v, unit){
+              if(isNaN(v)) return v;
+              if(unit.indexOf('billion') >= 0 || unit === 'b') return v * 1_000_000_000;
+              if(unit.indexOf('million') >= 0) return v * 1_000_000;
+              return v;
+            }
+            try {
+              const valA = toNumber(a, aunit);
+              const valB = toNumber(b, bunit);
+              if(!isNaN(valA) && !isNaN(valB) && valB > 0){
+                percent = (valA / valB) * 100;
+              }
+            } catch(e){}
+          }
+        }
+
+        // final fallback defaults for some common circles (if still null)
+        if(percent === null){
+          // fallback: use 0 so ring is empty initially then animate to a reasonable value later
+          percent = 0;
+        }
+
+        // set params now
+        setRingParams(circle, r, percent);
+      });
+
+      // subtle ring animation on load
+      document.querySelectorAll('.ring').forEach((el, i) => {
+        el.style.transition = 'stroke-dashoffset .9s cubic-bezier(.2,.9,.3,1), transform .6s ease';
+        el.style.transformOrigin = '50% 50%';
+        setTimeout(() => el.style.transform = 'scale(1.02)', 80 + i*40);
+        setTimeout(() => el.style.transform = 'none', 700 + i*40);
+      });
     })();
 
-    /* IntersectionObserver: fade elements in on scroll (page loading as you scroll) */
+    /* ----------------------------
+       Fade elements into view as you scroll
+       ---------------------------- */
     (function(){
       const obsOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.08 };
       const observer = new IntersectionObserver((entries) => {
@@ -602,8 +662,9 @@
           }
         });
       }, obsOptions);
+
       document.querySelectorAll('.fade-on-scroll').forEach(el => observer.observe(el));
-      // also observe essay blocks
+      // ensure essay blocks also fade (many already have the class)
       document.querySelectorAll('.essay-block').forEach(el => {
         if(!el.classList.contains('fade-on-scroll')) {
           el.classList.add('fade-on-scroll');
