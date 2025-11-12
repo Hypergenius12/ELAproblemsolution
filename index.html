@@ -34,60 +34,11 @@
       --font: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       --radius:12px; --shadow:0 10px 36px rgba(20,60,90,0.06);
     }
-    :root[data-theme="dark"]{
-      --bg:#0b0d10; --text:#e7eef6; --muted:#9aaebb; --accent:#7dd3fc; --accent-2:#6ee7b7; --card:#081014;
-      --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      --radius:8px; --shadow:0 12px 40px rgba(0,0,0,0.6);
-    }
-    :root[data-theme="contrast"]{
-      --bg:#ffffff; --text:#000000; --muted:#333333; --accent:#ff5b00; --accent-2:#00c2a8; --card:#ffffff;
-      --font: "Arial", system-ui, -apple-system, "Segoe UI", Roboto;
-      --radius:4px; --shadow:none;
-    }
-    :root[data-theme="pastel"]{
-      --bg:#fffbff; --text:#1e1b2e; --muted:#746b7a; --accent:#c89ad6; --accent-2:#9ad3bc; --card:#fff7ff;
-      --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto;
-      --radius:16px; --shadow:0 6px 18px rgba(120,90,140,0.06);
-    }
-
-    /* added themes that change more than color */
-    :root[data-theme="sunset"]{
-      --bg:#fff2ee; --text:#2b150f; --muted:#6e4b43; --accent:#ff6f59; --accent-2:#ffb87a; --card:#fff6f4;
-      --font: "Merriweather", Georgia, serif; --radius:14px; --shadow:0 10px 30px rgba(200,100,80,0.08);
-    }
     :root[data-theme="forest"]{
       --bg:#f4fbf7; --text:#072014; --muted:#3c6b4f; --accent:#2f9b57; --accent-2:#6bd3a6; --card:#f0fbf5;
       --font: "Georgia", serif; --radius:12px; --shadow:0 8px 28px rgba(20,60,40,0.06);
     }
-    :root[data-theme="ocean"]{
-      --bg:#f2fbff; --text:#04232c; --muted:#3b6f7a; --accent:#0b82c2; --accent-2:#00b5d8; --card:#f3fbff;
-      --font: "Nunito", system-ui, -apple-system; --radius:10px; --shadow:0 12px 34px rgba(4,60,80,0.06);
-    }
-    :root[data-theme="neon"]{
-      --bg:#05050a; --text:#e8f5ff; --muted:#9fb8ff; --accent:#ff2d95; --accent-2:#14f195; --card:#0b0610;
-      --font: "Orbitron", system-ui; --radius:6px; --shadow:0 0 30px rgba(255,30,120,0.06);
-    }
-    :root[data-theme="mono"]{
-      --bg:#ffffff; --text:#0a0a0a; --muted:#666666; --accent:#222222; --accent-2:#888888; --card:#ffffff;
-      --font: "Helvetica Neue", Arial, sans-serif; --radius:6px; --shadow:0 6px 18px rgba(0,0,0,0.04);
-    }
-    :root[data-theme="vintage"]{
-      --bg:#faf6ef; --text:#2b2317; --muted:#7c6a55; --accent:#c17b3a; --accent-2:#9b5b3a; --card:#fbf3e8;
-      --font: "Libre Baskerville", Georgia, serif; --radius:14px; --shadow:0 8px 26px rgba(80,60,40,0.06);
-    }
-    :root[data-theme="cyber"]{
-      --bg:#0b0d14; --text:#e6f6ff; --muted:#9bb7d1; --accent:#ff3bf6; --accent-2:#00f0ff; --card:#081018;
-      --font: "Orbitron", system-ui; --radius:8px; --shadow:0 12px 40px rgba(0,200,255,0.06);
-    }
-    :root[data-theme="minimal"]{
-      --bg:#ffffff; --text:#111111; --muted:#666666; --accent:#1f6feb; --accent-2:#10b981; --card:#ffffff;
-      --font: "Inter", system-ui; --radius:6px; --shadow:none;
-    }
-    :root[data-theme="highcontrast2"]{
-      --bg:#000000; --text:#ffffff; --muted:#cccccc; --accent:#ffff00; --accent-2:#00ff00; --card:#000000;
-      --font: "Arial Black", "Segoe UI Black", system-ui; --radius:2px; --shadow:none;
-    }
-
+ 
     /* Animated themes (classes on body add extra motion & layout effects) */
     /* sunrise-animated: moving gradient + small sun svg animation in header */
     .anim-sunrise { animation: bg-sunrise 12s linear infinite; background-size: 300% 300%; }
@@ -262,24 +213,7 @@
           <!-- 15+ themes -->
           <option value="warm">Warm (default)</option>
           <option value="cool">Cool</option>
-          <option value="dark">Dark</option>
-          <option value="contrast">High Contrast</option>
-          <option value="pastel">Pastel</option>
-
-          <option value="sunset">Sunset</option>
           <option value="forest">Forest</option>
-          <option value="ocean">Ocean</option>
-          <option value="neon">Neon</option>
-          <option value="mono">Monochrome</option>
-
-          <option value="vintage">Vintage</option>
-          <option value="cyber">Cyberpunk</option>
-          <option value="sunrise-animated">Sunrise (animated)</option>
-          <option value="marble-animated">Marble (animated)</option>
-          <option value="gradient-animated">Gradient (animated)</option>
-
-          <option value="minimal">Minimal</option>
-          <option value="highcontrast2">High Contrast 2</option>
         </select>
       </div>
     </header>
