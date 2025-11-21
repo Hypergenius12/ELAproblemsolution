@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Rise in Depression — Caleb Abbe (Animated Themes)</title>
+
   <style>
     /**********************************
      * Base variables & default styles
      **********************************/
-    :root{
+    :root {
       --bg: #fffaf5;
       --text: #1b1208;
       --muted: #5b4b3a;
@@ -19,134 +20,166 @@
       --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       --radius: 10px;
       --shadow: 0 8px 30px rgba(0,0,0,0.06);
-      --header-accent-svg: none;
       --header-height: 72px;
+      --gap: 14px;
     }
 
-    /* theme-specific overrides (data-theme) - many more than color */
-    :root[data-theme="warm"]{
+    /* theme-specific overrides */
+    :root[data-theme="warm"] {
       --bg:#fffaf5; --text:#1b1208; --muted:#5b4b3a; --accent:#a66b2a; --accent-2:#6cc3b8; --card:#fff5ea;
       --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       --radius:10px; --shadow:0 8px 30px rgba(0,0,0,0.06);
     }
-    :root[data-theme="cool"]{
+    :root[data-theme="cool"] {
       --bg:#f6fbff; --text:#032033; --muted:#4b6b7a; --accent:#3b82f6; --accent-2:#00c2a8; --card:#f2fbff;
       --font: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
       --radius:12px; --shadow:0 10px 36px rgba(20,60,90,0.06);
     }
-    :root[data-theme="forest"]{
+    :root[data-theme="forest"] {
       --bg:#f4fbf7; --text:#072014; --muted:#3c6b4f; --accent:#2f9b57; --accent-2:#6bd3a6; --card:#f0fbf5;
       --font: "Georgia", serif; --radius:12px; --shadow:0 8px 28px rgba(20,60,40,0.06);
     }
- 
-    /* Animated themes (classes on body add extra motion & layout effects) */
-    /* sunrise-animated: moving gradient + small sun svg animation in header */
-    .anim-sunrise { animation: bg-sunrise 12s linear infinite; background-size: 300% 300%; }
-    @keyframes bg-sunrise {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* marble-animated: subtle marble shift via background-position */
-    .anim-marble { animation: marble-shift 16s ease-in-out infinite; }
-    @keyframes marble-shift {
-      0% { background-position: 0% 0%; }
-      50% { background-position: 40% 60%; transform: translateY(1px); }
-      100% { background-position: 0% 0%; }
-    }
-
-    /* gradient-animated: soft gradient movement + card opacity shift */
-    .anim-gradient { animation: gradient-shift 10s ease-in-out infinite; }
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; filter: saturate(1.02); }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* cyber glow: panels glow in neon periodically */
-    .anim-cyber .panel, .anim-cyber .num-card { box-shadow: 0 0 20px rgba(255,0,200,0.06); animation: neonPulse 2.2s infinite; }
-    @keyframes neonPulse {
-      0% { box-shadow: 0 0 4px rgba(255,0,200,0.05); transform: translateY(0); }
-      50% { box-shadow: 0 0 26px rgba(0,240,255,0.12); transform: translateY(-2px); }
-      100% { box-shadow: 0 0 4px rgba(255,0,200,0.05); transform: translateY(0); }
-    }
-
-    /* ocean waves: moving svg wave in header (applied via :after) */
-    .anim-ocean:after {
-      content: "";
-      position: fixed;
-      left: 0; right: 0; top: 0; height: 60px;
-      background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.04), transparent 12%),
-                        radial-gradient(circle at 80% 60%, rgba(255,255,255,0.02), transparent 10%);
-      pointer-events: none;
-      animation: wave-move 14s linear infinite;
-      opacity: .7;
-      mix-blend-mode: overlay;
-    }
-    @keyframes wave-move {
-      0% { transform: translateX(0) translateY(0); }
-      50% { transform: translateX(-40px) translateY(4px); }
-      100% { transform: translateX(0) translateY(0); }
-    }
 
     /**********************************
-     * Base layout
+     * Reset & base layout
      **********************************/
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:var(--font);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
-    .page{max-width:980px;margin:48px auto;padding:22px}
-    header{display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:var(--radius);background:var(--card);border:1px solid var(--panel-border);box-shadow:var(--shadow);position:relative}
-    .title{font-size:16px;font-weight:700}
-    .meta{font-size:13px;color:var(--muted)}
-    .controls{display:flex;gap:8px;align-items:center}
-    select{padding:6px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);background:white;font-size:14px}
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: var(--font); background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+    .page { max-width: 980px; margin: 48px auto; padding: 22px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    /* header left */
+    .title { font-size: 16px; font-weight: 700; }
+    .meta { font-size: 13px; color: var(--muted); }
+
+    /* controls */
+    .controls { display:flex; gap:10px; align-items:center; }
+    select { padding: 6px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); background: white; font-size: 14px; }
 
     /* MLA header fixed */
-    .mla{position:fixed;left:14px;top:14px;background:var(--card);padding:10px 12px;border-radius:10px;border:1px solid var(--panel-border);font-size:13px;z-index:130;box-shadow:var(--shadow)}
-    .mla b{display:block;color:var(--text)}
+    .mla {
+      position: fixed;
+      left: 14px;
+      top: 14px;
+      background: var(--card);
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--panel-border);
+      font-size: 13px;
+      z-index: 130;
+      box-shadow: var(--shadow);
+    }
+    .mla b { display:block; color: var(--text); }
 
-    main{margin-top:18px}
-    h1{margin:14px 0 6px}
-    .lead{color:var(--muted);margin-bottom:14px}
+    main { margin-top: 18px; }
 
-    .panel{background:linear-gradient(180deg, rgba(255,255,255,0.5), transparent);border-radius:calc(var(--radius));padding:14px;border:1px solid var(--panel-border);display:flex;flex-direction:column;gap:12px;transition:transform .28s ease, box-shadow .28s ease}
-    .panel:hover{transform:translateY(-4px)}
-    .summary{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
-    @media (max-width:880px){.summary{grid-template-columns:1fr}}
-    .center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
+    h1 { margin: 14px 0 6px; }
+    h2 { margin-top: 26px; }
+    h3 { margin: 0 0 6px; }
+    h4 { margin: 0; }
 
-    .svg-wrap{width:220px;height:220px;display:grid;place-items:center;border-radius:12px;background:rgba(0,0,0,0.02);padding:12px;margin:0 auto;overflow:visible}
-    .svg-inline{width:100%;height:100%}
+    .lead { color: var(--muted); margin-bottom: 14px; }
 
-    .bars-row{display:flex;gap:10px;align-items:flex-end;justify-content:center;height:140px;padding:8px}
-    .bar{width:72px;border-radius:8px;display:flex;align-items:flex-end;justify-content:center;color:#fff;font-weight:800}
-    .bar-label{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
+    /* panels */
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.5), transparent);
+      border-radius: var(--radius);
+      padding: 16px;
+      border: 1px solid var(--panel-border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .panel:hover { transform: translateY(-4px); }
 
-    .essay-block{display:flex;gap:20px;margin:22px 0;align-items:flex-start}
-    @media (max-width:760px){.essay-block{flex-direction:column}}
-    .essay-text{flex:1}
-    .essay-text p{margin:8px 0;color:var(--muted);line-height:1.6;}
+    .center { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; }
 
-    .chart-column{width:260px;min-width:220px;display:flex;flex-direction:column;align-items:center;gap:10px}
+    .summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 18px; }
+    @media (max-width:880px) { .summary { grid-template-columns: 1fr; } }
 
-    .num-card{background:var(--card);padding:10px;border-radius:calc(var(--radius));border:1px solid var(--panel-border);text-align:center;width:140px;box-shadow:var(--shadow)}
-    .num-big{font-weight:800;font-size:20px}
-    .num-label{font-size:13px;color:var(--muted)}
+    /* consistent image/media styling */
+    .media-card {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    .media-card img {
+      display:block;
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+    .media-figure { display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
+    .media-caption { font-size:13px; color:var(--muted); }
 
-    .works-cited{margin-top:18px;font-size:13px;color:var(--muted);line-height:1.45}
-    .works-cited h3{margin-bottom:8px}
-    .works-cited li{margin:6px 0}
-    footer{margin-top:26px;font-size:13px;color:var(--muted);text-align:left;padding-bottom:40px}
+    .svg-wrap {
+      width:220px;
+      height:220px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:rgba(0,0,0,0.02);
+      padding:12px;
+      margin:0 auto;
+      overflow:visible;
+    }
+    .svg-inline { width:100%; height:100%; }
+
+    .bars-row { display:flex; gap:10px; align-items:flex-end; justify-content:center; height:140px; padding:8px; }
+    .bar { width:72px; border-radius:8px; display:flex; align-items:flex-end; justify-content:center; color:#fff; font-weight:800; }
+    .bar-label { margin-top:8px; font-size:13px; color:var(--muted); text-align:center; }
+
+    .essay-block { display:flex; gap:20px; margin:22px 0; align-items:flex-start; }
+    @media (max-width:760px) { .essay-block { flex-direction:column; } }
+    .essay-text { flex:1; }
+    .essay-text p { margin:8px 0; color:var(--muted); line-height:1.6; }
+
+    .chart-column { width:260px; min-width:220px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+
+    .num-card {
+      background:var(--card);
+      padding:10px;
+      border-radius:calc(var(--radius));
+      border:1px solid var(--panel-border);
+      text-align:center;
+      width:140px;
+      box-shadow:var(--shadow);
+    }
+    .num-big { font-weight:800; font-size:20px; }
+    .num-label { font-size:13px; color:var(--muted); }
+
+    .works-cited { margin-top:18px; font-size:13px; color:var(--muted); line-height:1.45; }
+    .works-cited h3 { margin-bottom:8px; }
+    .works-cited li { margin:6px 0; }
+
+    footer { margin-top:26px; font-size:13px; color:var(--muted); text-align:left; padding-bottom:40px; }
 
     /* visuals */
     .donut { width:140px; height:140px; display:grid; place-items:center; border-radius:50%; background:#fff; }
     .hollow { width:160px; height:160px; display:grid; place-items:center; }
-    .people-row{display:flex;gap:6px;align-items:center;justify-content:center}
-    .person{width:18px;height:24px;border-radius:3px;background:#ddd;display:inline-block;position:relative}
-    .person::before{content:'';position:absolute;left:50%;transform:translateX(-50%);top:-6px;width:10px;height:10px;border-radius:50%;background:#ddd}
-    .person.on{background:var(--accent);color:#fff}
-    .person.on::before{background:var(--accent)}
+    .people-row { display:flex; gap:6px; align-items:center; justify-content:center; }
+    .person {
+      width:18px; height:24px; border-radius:3px; background:#ddd; display:inline-block; position:relative;
+    }
+    .person::before {
+      content:''; position:absolute; left:50%; transform:translateX(-50%); top:-6px; width:10px; height:10px; border-radius:50%; background:#ddd;
+    }
+    .person.on { background:var(--accent); color:#fff; }
+    .person.on::before { background:var(--accent); }
 
     .ring { transform: rotate(-90deg); }
     .ring circle { transition: stroke-dashoffset .9s cubic-bezier(.2,.9,.3,1); transform-origin:50% 50%; }
@@ -156,13 +189,14 @@
       display: flex;
       margin-bottom: 20px;
       border-bottom: 1px solid var(--panel-border);
+      gap: 6px;
+      flex-wrap:wrap;
     }
-    
     .tab {
       padding: 12px 20px;
       cursor: pointer;
       background: var(--card);
-      border: 1px solid var(--panel-border);
+      border: 4px solid var(--panel-border);
       border-bottom: none;
       border-radius: var(--radius) var(--radius) 0 0;
       margin-right: 4px;
@@ -170,36 +204,29 @@
       color: var(--muted);
       transition: all 0.2s ease;
     }
-    
     .tab.active {
       color: var(--text);
       background: var(--bg);
-      border-bottom: 1px solid var(--bg);
+      border-bottom: 4px solid var(--bg);
     }
-    
-    .tab-content {
-      display: none;
-    }
-    
-    .tab-content.active {
-      display: block;
-    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
 
-    /* small responsive tweaks */
-    @media (max-width:520px){
-      .svg-wrap{width:180px;height:180px}
-      .chart-column{width:100%}
+    /* helper utility classes */
+    .stack { display:flex; flex-direction:column; gap:8px; }
+    .muted-text { color:var(--muted); font-size:13px; }
+    .center-inline { display:flex; align-items:center; gap:10px; }
+
+    /* responsive tweaks */
+    @media (max-width:510px) {
+      .svg-wrap { width:180px; height:180px; }
+      .chart-column { width:100%; }
+      .media-card img { height:160px; }
     }
   </style>
 </head>
-<body>
-  <!-- MLA header (fixed) -->
-  <div class="mla" aria-hidden="false">
-    <b>Caleb Abbe</b>
-    ENG 101 — Professor Fantauzzi<br>
-    Date: 10/29/2025
-  </div>
 
+<body>
   <div class="page" role="main">
     <header aria-label="Site header">
       <div>
@@ -210,7 +237,6 @@
       <div class="controls">
         <label for="theme" class="meta">Theme:</label>
         <select id="theme" aria-label="Choose theme">
-          <!-- 15+ themes -->
           <option value="warm">Warm (default)</option>
           <option value="cool">Cool</option>
           <option value="forest">Forest</option>
@@ -218,56 +244,76 @@
       </div>
     </header>
 
+    <!-- Hero image kept -->
+    <figure class="media-card" style="margin:14px 0;">
+      <img
+        src="https://images.unsplash.com/photo-1574254706427-213d446e2f2b?w=1200&auto=format&fit=crop&q=80"
+        alt="Person sitting, reflective — visual for depression"
+        loading="lazy"
+      />
+
+
     <!-- Tabs Navigation -->
-    <div class="tabs">
-      <div class="tab active" data-tab="overview">Overview</div>
-      <div class="tab" data-tab="pandemic">Pandemic Impact</div>
-      <div class="tab" data-tab="statistics">Statistics</div>
-      <div class="tab" data-tab="solutions">Solutions</div>
-      <div class="tab" data-tab="conclusion">Conclusion</div>
+    <div class="tabs" role="tablist" aria-label="Main sections">
+      <div class="tab active" data-tab="overview" role="tab" aria-selected="true" tabindex="0">Overview</div>
+      <div class="tab" data-tab="pandemic" role="tab" tabindex="0">Pandemic Impact</div>
+      <div class="tab" data-tab="statistics" role="tab" tabindex="0">Statistics</div>
+      <div class="tab" data-tab="solutions" role="tab" tabindex="0">Solutions</div>
+      <div class="tab" data-tab="conclusion" role="tab" tabindex="0">Conclusion</div>
     </div>
 
     <main>
       <!-- Overview Tab -->
       <div class="tab-content active" id="tab-overview">
         <h1>Data</h1>
-        <p class="lead">I made charts only for the numbers you gave. Amounts = pies out of world population (8.1B), percents = hollow donuts, 1-in-X = little people row with one colored.</p>
+        <p class="lead">I just put it all in one place</p>
 
         <!-- SUMMARY -->
         <section class="summary" aria-label="Summary infographics">
           <div class="panel center" role="region" aria-labelledby="global-title">
-            <h3 id="global-title">Global totals (out of 8.1B)</h3>
+            <h3 id="global-title">Global percent with mental illness</h3>
 
             <div class="svg-wrap" aria-hidden="false">
               <svg viewBox="0 0 220 220" class="svg-inline" role="img" aria-label="1 billion out of 8.1 billion">
                 <defs>
-                  <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient>
+                  <linearGradient id="g1" x1="0" x2="1">
+                    <stop offset="0" stop-color="var(--accent)"/>
+                    <stop offset="1" stop-color="var(--accent-2)"/>
+                  </linearGradient>
                 </defs>
+
                 <g transform="translate(110,110)">
                   <circle r="90" fill="#f7f7f7"></circle>
                   <circle r="70" fill="none" stroke="#eee" stroke-width="80"></circle>
-                  <circle class="ring" r="70" fill="none" stroke="url(#g1)\" stroke-width="80" stroke-dasharray="439.82" stroke-dashoffset="439.82"></circle>
+
+                  <circle class="ring"
+                          r="70"
+                          fill="none"
+                          stroke="url(#g1)"
+                          stroke-width="80"
+                          stroke-dasharray="439.82"
+                          stroke-dashoffset="385"></circle>
+
                   <text x="0" y="-6" font-size="18" text-anchor="middle" fill="var(--text)" font-weight="700">1B</text>
-                  <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">of 8.1B (≈12.35%)</text>
+                  <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">12.35%</text>
                 </g>
               </svg>
             </div>
 
-            <div style="display:flex;gap:12px;margin-top:6px;justify-content:center">
-              <div class="num-card" title="280 million out of 8.1 billion">
-                <div class="num-big">280M</div>
-                <div class="num-label">depression</div>
-              </div>
-              <div class="svg-wrap" style="width:120px;height:120px">
-                <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="280 million out of 8.1 billion (pie)">
-                  <defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
-                  <g transform="translate(60,60)">
-                    <circle r="46" fill="#fff"></circle>
-                    <circle r="46" fill="none" stroke="#eee" stroke-width="28"></circle>
-                    <circle class="ring" r="46" fill="none" stroke="url(#g2)" stroke-width="28" stroke-dasharray="289.03" stroke-dashoffset="289.03"></circle>
-                    <text x="0" y="4" font-size="12" text-anchor="middle" fill="var(--text)" font-weight="700">3.46%</text>
-                  </g>
-                </svg>
+            <div class="stack" style="align-items:center;">
+              <h4 style="font-size:16px;color:var(--text);font-weight:700">280 million with depression</h4>
+
+              <div class="center-inline" style="flex-wrap:wrap;justify-content:center;max-width:760px;">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Indonesia_blank_map.svg/960px-Indonesia_blank_map.svg.png"
+                  alt="Silhouette map of Indonesia"
+                  style="max-width:260px;height:auto;border-radius:8px;border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 20px rgba(0,0,0,0.06)"
+                  loading="lazy"
+                />
+
+                <div style="max-width:380px;color:var(--muted);font-size:13px;line-height:1.45">
+                  ≈ equal to the population of <strong>Indonesia</strong> — the 4th most populated country in the world.
+                </div>
               </div>
             </div>
           </div>
@@ -275,7 +321,7 @@
           <div class="panel center" role="region" aria-labelledby="us-title">
             <h3 id="us-title">U.S. prevalence & gaps</h3>
 
-            <div style="display:flex;gap:12px;align-items:center;flex-direction:column">
+            <div style="display:flex;gap:18px;align-items:flex-start;flex-direction:column;width:100%;">
               <div style="text-align:center">
                 <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 5 adults (any mental illness)</div>
                 <div class="people-row" id="p1in5" aria-hidden="false" title="1 in 5 highlighted">
@@ -287,7 +333,7 @@
                 </div>
               </div>
 
-              <div style="text-align:center;margin-top:10px">
+              <div style="text-align:center">
                 <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 6 people (depression)</div>
                 <div class="people-row" id="p1in6" aria-hidden="false" title="1 in 6 highlighted">
                   <span class="person on" aria-hidden="true"></span>
@@ -299,7 +345,7 @@
                 </div>
               </div>
 
-              <div style="margin-top:16px;text-align:center">
+              <div style="text-align:center">
                 <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Almost half of adults do not get treated</div>
                 <div class="hollow" role="img" aria-label="50 percent untreated">
                   <svg viewBox="0 0 120 120" class="svg-inline">
@@ -312,7 +358,7 @@
                 </div>
               </div>
 
-              <div style="margin-top:12px;text-align:center">
+              <div style="text-align:center">
                 <div style="font-size:13px;color:var(--muted);margin-bottom:6px">~1 out of 3 U.S. counties have no provider</div>
                 <div class="hollow" role="img" aria-label="33 percent counties without providers">
                   <svg viewBox="0 0 120 120" class="svg-inline">
@@ -324,7 +370,6 @@
                   </svg>
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -333,11 +378,12 @@
       <!-- Pandemic Impact Tab -->
       <div class="tab-content" id="tab-pandemic">
         <section class="panel" aria-label="Pandemic and impacts">
-          <h3>Pandemic effect & impact metrics</h3>
+          <h3>Pandemic effect & impact</h3>
 
           <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
             <div style="flex:1;min-width:320px">
-              <div style="font-size:13px;color:var(--muted)">Estimated change in anxiety & depression (index)</div>
+              <div class="muted-text">Estimated change in anxiety & depression</div>
+
               <div style="display:flex;gap:12px;align-items:end;justify-content:center;margin-top:12px;height:160px">
                 <div style="flex:1;text-align:center">
                   <svg width="90" height="120" viewBox="0 0 90 120" role="img" aria-label="Pre-pandemic 100">
@@ -346,26 +392,38 @@
                   </svg>
                   <div class="bar-label">Pre-pandemic</div>
                 </div>
+
                 <div style="flex:1;text-align:center">
                   <svg width="90" height="140" viewBox="0 0 90 140" role="img" aria-label="During pandemic +25%">
                     <rect x="10" y="2" width="70" height="120" rx="10" fill="var(--accent-2)"></rect>
                     <text x="45" y="62" text-anchor="middle" fill="#fff" font-weight="800">125</text>
                   </svg>
-                  <div class="bar-label">During (+25%)</div>
+                  <div class="bar-label">During</div>
                 </div>
+
                 <div style="flex:1;text-align:center">
                   <svg width="90" height="136" viewBox="0 0 90 136" role="img" aria-label="Now 120">
                     <rect x="10" y="6" width="70" height="110" rx="10" fill="#9fb0bd"></rect>
                     <text x="45" y="64" text-anchor="middle" fill="#081014" font-weight="800">120</text>
                   </svg>
-                  <div class="bar-label">Now (est.)</div>
+                  <div class="bar-label">Now</div>
                 </div>
               </div>
+
+              <!-- pandemic image (second Unsplash) -->
+              <figure class="media-card" style="margin-top:12px;">
+                <img
+                  src="https://images.unsplash.com/photo-1583324113626-70df0f4deaab?w=1200&auto=format&fit=crop&q=80"
+                  alt="Crowded room with masks — visual cue for pandemic context"
+                  loading="lazy"
+                />
+                <figcaption class="media-caption" style="padding:10px 12px;">COVID-19 virus</figcaption>
+              </figure>
             </div>
 
             <div style="min-width:260px;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center">
               <div style="text-align:center">
-                <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Reported severe loneliness</div>
+                <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Reported severe loneliness in US</div>
                 <div class="hollow">
                   <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="21 percent loneliness">
                     <g transform="translate(60,60)">
@@ -378,7 +436,7 @@
               </div>
 
               <div style="display:flex;gap:12px;align-items:center">
-                <div class="num-card"><div class="num-big">#2</div><div class="num-label">suicide (10–34)</div></div>
+                <div class="num-card"><div class="num-big">#2</div><div class="num-label">highest cause of death is suicide (ages 10–34)</div></div>
                 <div class="num-card"><div class="num-big">$1T+</div><div class="num-label">estimated annual loss</div></div>
               </div>
             </div>
@@ -388,7 +446,7 @@
 
       <!-- Statistics Tab -->
       <div class="tab-content" id="tab-statistics">
-        <h2 style="margin-top:26px">Essay</h2>
+        <h2>Essay</h2>
 
         <!-- Essay blocks — visuals only where numbers appear -->
         <div class="essay-block" id="A">
@@ -396,32 +454,25 @@
             <p>The majority of people in the U.S. who deal with a mental illness never reach out for help and the number of cases constantly rise.</p>
             <p>There are around 1 billion people worldwide suffering from a mental disorder and nearly 280 million people suffering from depression.</p>
           </div>
+
           <div class="chart-column">
             <div class="svg-wrap" style="height:180px">
               <svg viewBox="0 0 200 200" class="svg-inline" role="img" aria-label="1 billion out of 8.1 billion (pie)">
-                <defs><linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs>
+                <defs>
+                  <linearGradient id="gA" x1="0" x2="1">
+                    <stop offset="0" stop-color="var(--accent)"/>
+                    <stop offset="1" stop-color="var(--accent-2)"/>
+                  </linearGradient>
+                </defs>
+
                 <g transform="translate(100,100)">
                   <circle r="72" fill="#fff"></circle>
                   <circle r="72" fill="none" stroke="#eee" stroke-width="36"></circle>
                   <circle class="ring" r="72" fill="none" stroke="url(#gA)" stroke-width="36" stroke-dasharray="452.39" stroke-dashoffset="452.39"></circle>
                   <text x="0" y="-6" font-size="18" text-anchor="middle" fill="var(--text)" font-weight="700">1B</text>
-                  <text x="0" y="18" font-size="11" text-anchor="middle" fill="var(--muted)">of 8.1B ≈ 12.35%</text>
+                  <text x="0" y="18" font-size="12" text-anchor="middle" fill="var(--muted)">12.35</text>
                 </g>
               </svg>
-            </div>
-
-            <div style="display:flex;gap:8px">
-              <div class="num-card"><div class="num-big">280M</div><div class="num-label">depression</div></div>
-              <div class="svg-wrap" style="width:110px;height:110px">
-                <svg viewBox="0 0 120 120" class="svg-inline" role="img" aria-label="280 million out of 8.1 billion">
-                  <g transform="translate(60,60)">
-                    <circle r="46" fill="#fff"></circle>
-                    <circle r="46" fill="none" stroke="#eee" stroke-width="28"></circle>
-                    <circle class="ring" r="46" fill="none" stroke="url(#gA)" stroke-width="28" stroke-dasharray="289.03" stroke-dashoffset="289.03"></circle>
-                    <text x="0" y="4" font-size="11" text-anchor="middle" fill="var(--text)" font-weight="700">3.46%</text>
-                  </g>
-                </svg>
-              </div>
             </div>
           </div>
         </div>
@@ -430,9 +481,10 @@
           <div class="essay-text">
             <p>About 1 in every 5 adults suffers from any mental illness in the United States, and 1 in every 6 people suffer from depression.</p>
           </div>
+
           <div class="chart-column">
             <div style="text-align:center">
-              <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 5 (any mental illness)</div>
+              <div style="font-size:13px;color:var(--muted);margin-bottom:7px">Any mental illness</div>
               <div class="people-row" aria-hidden="true">
                 <span class="person on"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span>
               </div>
@@ -441,7 +493,7 @@
             <div style="height:12px"></div>
 
             <div style="text-align:center">
-              <div style="font-size:13px;color:var(--muted);margin-bottom:6px">1 in 6 (depression)</div>
+              <div style="font-size:13px;color:var(--muted);margin-bottom:7px">Depression</div>
               <div class="people-row" aria-hidden="true">
                 <span class="person on"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span><span class="person"></span>
               </div>
@@ -454,16 +506,27 @@
             <p>These are big numbers. They show us that mental illness is not just a person's problem. It happens to families, and in schools, and communities. The pandemic has made this a whole lot worse. To help this we need more real solutions like expanded school and community counseling, increased tele therapy, and more public awareness, so people know how to get help.</p>
           </div>
         </div>
+
+        <!-- therapy image (third Unsplash) -->
+        <figure class="media-card" style="margin-top:12px;">
+          <img
+            src="https://images.unsplash.com/photo-1551847677-dc82d764e1eb?w=1200&auto=format&fit=crop&q=80"
+            alt="Therapy session visual — represents counseling and teletherapy"
+            loading="lazy"
+          />
+          <figcaption class="media-caption" style="padding:10px 12px;">Therapy & telehealth</figcaption>
+        </figure>
       </div>
 
       <!-- Solutions Tab -->
       <div class="tab-content" id="tab-solutions">
-        <h2 style="margin-top:26px">Solutions</h2>
+        <h2>Solutions</h2>
 
         <div class="essay-block" id="D">
           <div class="essay-text">
-            <p>One of the major causes of the rise in mental illness was covid19. During the pandemic, many people were in isolation from much of the world. 21% of people reported sever loneliness.</p>
+            <p>One of the major causes of the rise in mental illness was covid19. During the pandemic, many people were in isolation from much of the world. 21% of people reported severe loneliness.</p>
           </div>
+
           <div class="chart-column">
             <div class="hollow">
               <svg viewBox="0 0 120 120" class="svg-inline">
@@ -474,14 +537,15 @@
                 </g>
               </svg>
             </div>
-            <div style="font-size:13px;color:var(--muted)">Pandemic isolation metric</div>
+            <div class="muted-text">Pandemic isolation metric</div>
           </div>
         </div>
 
         <div class="essay-block" id="F">
           <div class="essay-text">
-            <p>During the pandemic, studies showed a 25% increase in anxiety and depression across the world during the pandemic. When people get depressed for a long time, it can turn into more serious problems like dropping out of school, or even suicidal thoughts. Suicide is now the second highest leading cause of death in ages 10 to 34 in America. All of these facts just show how big this is.</p>
+            <p>During the pandemic, studies showed a 25% increase in anxiety and depression across the world. When people get depressed for a long time, it can turn into more serious problems like dropping out of school, or even suicidal thoughts. Suicide is now the second highest leading cause of death in ages 10 to 34 in America. All of these facts just show how big this is.</p>
           </div>
+
           <div class="chart-column">
             <div class="hollow">
               <svg viewBox="0 0 120 120" class="svg-inline">
@@ -492,7 +556,11 @@
                 </g>
               </svg>
             </div>
-            <div style="margin-top:6px" class="num-card"><div class="num-big">#2</div><div class="num-label">suicide (10–34)</div></div>
+
+            <div style="margin-top:6px" class="num-card">
+              <div class="num-big">#2</div>
+              <div class="num-label">Cause of death in ages 10-34 is suicide</div>
+            </div>
           </div>
         </div>
 
@@ -500,6 +568,7 @@
           <div class="essay-text">
             <p>Another big issue is that there are many people who don’t receive the help they need. Almost half of all adults in the U.S. that are suffering from mental illness do not get treated.</p>
           </div>
+
           <div class="chart-column">
             <div class="hollow">
               <svg viewBox="0 0 120 120" class="svg-inline">
@@ -510,7 +579,7 @@
                 </g>
               </svg>
             </div>
-            <div style="font-size:13px;color:var(--muted)">Approximate share untreated</div>
+            <div class="muted-text">% untreated</div>
           </div>
         </div>
 
@@ -518,6 +587,7 @@
           <div class="essay-text">
             <p>That is because therapy costs too much or there is no practitioner in their community. One out of every three U.S. counties, actually, has no licensed counselor, psychiatrist, or psychologist. This shows that people in rural or poor communities usually have nowhere to turn.</p>
           </div>
+
           <div class="chart-column">
             <div class="hollow">
               <svg viewBox="0 0 120 120" class="svg-inline">
@@ -528,7 +598,7 @@
                 </g>
               </svg>
             </div>
-            <div style="font-size:13px;color:var(--muted)">Counties w/o MH pro (approx.)</div>
+            <div class="muted-text">Counties without counselors</div>
           </div>
         </div>
 
@@ -536,16 +606,37 @@
           <div class="essay-text">
             <p>Also, mental illness reduces people's ability to work and inhibits learning. The economy takes a massive loss, over a trillion dollars each year, because of people not showing up to work or being unable to perform as best they can in their profession. These facts explain how mental illness injures people emotionally while financially impacting society.</p>
           </div>
+
           <div class="chart-column">
-            <div class="num-card"><div class="num-big">$1T+</div><div class="num-label">estimated annual loss</div></div>
-            <div style="margin-top:8px;font-size:13px;color:var(--muted)">Economic impact (order of magnitude)</div>
+            <div class="num-card">
+              <div class="num-big">$1T+</div>
+              <div class="num-label">estimated annual loss</div>
+            </div>
+		
+            <div style="margin-top:8px" class="muted-text">Economic impact</div>
+	
           </div>
+
         </div>
+<a href="https://youtu.be/oxx564hMBUI" target="_blank" style="
+  display:inline-block;
+  padding:12px 20px;
+  background:linear-gradient(135deg,#ff0033,#ff7700);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  border-radius:10px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  transition:0.25s;
+">
+  ▶ Watch the Video
+</a>
+
       </div>
 
       <!-- Conclusion Tab -->
       <div class="tab-content" id="tab-conclusion">
-        <h2 style="margin-top:26px">Conclusion</h2>
+        <h2>Conclusion</h2>
 
         <div class="essay-block" id="J">
           <div class="essay-text">
@@ -557,13 +648,59 @@
           <div class="essay-text">
             <p>We also need to expand telehealth and online counseling. Teletherapy worked for a lot of people during the pandemic. It helps those who are far from a clinic or can't leave home. Local community centers or maybe libraries can offer free internet and private rooms for people to use for teletherapy. Governments should fund teletherapy so that it is affordable for people. By allowing counselors to practice across state lines would allow for more people to receive help.</p>
           </div>
-          <div class="chart-column">
-            <div class="num-card"><div class="num-big">Teletherapy</div><div class="num-label">Access & reach</div></div>
+
+          <!-- REPLACED: removed Teletherapy num-card per your request.
+               Added a small inline bar chart showing percentage of adults reporting symptoms of anxiety or depression (selected points from Household Pulse / CDC / USAFacts). -->
+          <div class="chart-column" style="align-items:center;">
+            <div style="text-align:center;font-size:13px;color:var(--muted);margin-bottom:6px">% of adults reporting symptoms</div>
+
+            <!-- Simple inline SVG bar chart -->
+            <svg width="260" height="160" viewBox="0 0 260 160" aria-label="Trend: share of adults reporting symptoms of anxiety or depression">
+              <!-- axes -->
+              <line x1="30" y1="10" x2="30" y2="120" stroke="#eee" stroke-width="1"></line>
+              <line x1="30" y1="120" x2="240" y2="120" stroke="#eee" stroke-width="1"></line>
+
+              <!-- bars (scale: 2px per percent, baseline at y=120) -->
+              <!-- May 2020: 35.9% -> height 71.8 -->
+              <rect x="40" y="48.2" width="36" height="71.8" rx="4" fill="url(#barG)"></rect>
+              <text x="58" y="135" font-size="11" text-anchor="middle" fill="var(--muted)">May 2020</text>
+              <text x="58" y="40" font-size="12" font-weight="700" text-anchor="middle" fill="var(--text)">35.9%</text>
+
+              <!-- Nov 2020: 42.6% -> height 85.2 -->
+              <rect x="92" y="34.8" width="36" height="85.2" rx="4" fill="url(#barG)"></rect>
+              <text x="110" y="135" font-size="11" text-anchor="middle" fill="var(--muted)">Nov 2020</text>
+              <text x="110" y="26" font-size="12" font-weight="700" text-anchor="middle" fill="var(--text)">42.6%</text>
+
+              <!-- Feb 2021: 41.5% -> height 83 -->
+              <rect x="144" y="37" width="36" height="83" rx="4" fill="url(#barG2)"></rect>
+              <text x="162" y="135" font-size="11" text-anchor="middle" fill="var(--muted)">Feb 2021</text>
+              <text x="162" y="29" font-size="12" font-weight="700" text-anchor="middle" fill="var(--text)">41.5%</text>
+
+              <!-- Oct 2023: 33.5% -> height 67 -->
+              <rect x="196" y="53" width="36" height="67" rx="4" fill="url(#barG2)"></rect>
+              <text x="214" y="135" font-size="11" text-anchor="middle" fill="var(--muted)">Oct 2023</text>
+              <text x="214" y="45" font-size="12" font-weight="700" text-anchor="middle" fill="var(--text)">33.5%</text>
+
+              <defs>
+                <linearGradient id="barG" x1="0" x2="1">
+                  <stop offset="0" stop-color="var(--accent)"></stop>
+                  <stop offset="1" stop-color="var(--accent-2)"></stop>
+                </linearGradient>
+                <linearGradient id="barG2" x1="0" x2="1">
+                  <stop offset="0" stop-color="var(--accent-2)"></stop>
+                  <stop offset="1" stop-color="var(--accent)"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <div class="muted-text" style="margin-top:8px;max-width:220px;text-align:center;">
+              CDC Figures
+            </div>
           </div>
         </div>
 
         <!-- Works Cited -->
-        <section class="works-cited" aria-labelledby="wc-h">
+        <section class="works-cited" aria-labelledby="wc-h" style="margin-top:18px;">
           <h3 id="wc-h">Works Cited</h3>
           <ol>
             <li>World Health Organization. "Mental disorders." <em>World Health Organization</em>, World Health Organization, <a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank" rel="noopener">https://www.who.int/news-room/fact-sheets/detail/mental-disorders</a>. Accessed 29 Oct. 2025.</li>
@@ -576,90 +713,26 @@
       </div>
     </main>
 
-    <footer>By: Caleb Abbe — ENG 101 — Professor Fantauzzi — 2025</footer>
+    <footer>By: Caleb Abbe — ENG 101 — Fantauzzi — 2025</footer>
   </div>
 
   <script>
-    /* Theme application + animated-class handling (applies more than colors) */
-    (function(){
+    /* Simplified theme application (removed unused animated/theme-accent code per request) */
+    (function () {
       const sel = document.getElementById('theme');
       const saved = localStorage.getItem('caleb_theme_v5') || 'warm';
 
-      // themes that require extra animation class on body
-      const animatedMap = {
-        'sunrise-animated': 'anim-sunrise',
-        'marble-animated': 'anim-marble',
-        'gradient-animated': 'anim-gradient',
-        'cyber': 'anim-cyber',
-        'ocean': 'anim-ocean'
-      };
-
-      function applyTheme(t){
-        if(!t) t = 'warm';
+      function applyTheme(t) {
+        if (!t) t = 'warm';
+        // only set the data-theme attribute that maps to CSS variables
         document.documentElement.setAttribute('data-theme', t === 'warm' ? 'warm' : t);
-
-        // remove all anim classes
-        document.body.classList.remove('anim-sunrise','anim-marble','anim-gradient','anim-cyber','anim-ocean');
-
-        // add relevant animation class if theme needs it
-        const cls = animatedMap[t];
-        if(cls) document.body.classList.add(cls);
-
-        // some themes tweak header visuals (small svg) — we set or remove a header accent
-        const header = document.querySelector('header');
-        // remove prior accent
-        const existing = header.querySelector('.theme-accent');
-        if(existing) existing.remove();
-
-        // add small SVG accent for certain themes
-        if(t === 'sunrise-animated'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent');
-          svg.setAttribute('width','120');
-          svg.setAttribute('height','48');
-          svg.setAttribute('viewBox','0 0 120 48');
-          svg.innerHTML = `
-            <defs><linearGradient id="sunG" x1="0" x2="1"><stop offset="0" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()}" /><stop offset="1" stop-color="${getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()}" /></linearGradient></defs>
-            <g transform="translate(0,0)">
-              <circle cx="24" cy="24" r="10" fill="url(#sunG)">
-                <animate attributeName="cy" values="24;18;24" dur="6s" repeatCount="indefinite"></animate>
-                <animate attributeName="r" values="10;12;10" dur="6s" repeatCount="indefinite"></animate>
-              </circle>
-              <rect x="46" y="18" width="68" height="8" rx="4" fill="rgba(0,0,0,0.03)"></rect>
-            </g>`;
-          svg.style.marginLeft = '12px';
-          header.appendChild(svg);
-        } else if(t === 'ocean'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent');
-          svg.setAttribute('width','160');
-          svg.setAttribute('height','48');
-          svg.setAttribute('viewBox','0 0 160 48');
-          svg.innerHTML = `
-            <g transform="translate(0,0)">
-              <path d="M0 34 Q20 22 40 34 T80 34 T120 34 T160 34 V48 H0 Z" fill="${getComputedStyle(document.documentElement).getPropertyValue('--accent-2').trim()}" opacity="0.12">
-                <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0 0; -10 0; 0 0" dur="6s" repeatCount="indefinite"/>
-              </path>
-            </g>`;
-          svg.style.marginLeft = '12px';
-          header.appendChild(svg);
-        } else if(t === 'cyber'){
-          const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-          svg.setAttribute('class','theme-accent');
-          svg.setAttribute('width','120');
-          svg.setAttribute('height','48');
-          svg.setAttribute('viewBox','0 0 120 48');
-          svg.innerHTML = `<g><rect x="0" y="8" width="120" height="32" rx="6" fill="rgba(255,255,255,0.02)"></rect></g>`;
-          svg.style.marginLeft = '12px';
-          header.appendChild(svg);
-        }
       }
 
       // init
       sel.value = saved;
       applyTheme(saved);
 
-      sel.addEventListener('change', function(e){
+      sel.addEventListener('change', function (e) {
         const v = e.target.value;
         applyTheme(v);
         localStorage.setItem('caleb_theme_v5', v);
@@ -667,30 +740,33 @@
     })();
 
     /* Tab switching functionality */
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabs = document.querySelectorAll('.tab');
-      
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-          const tabId = this.getAttribute('data-tab');
-          
-          // Remove active class from all tabs and content
-          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-          
-          // Add active class to clicked tab
-          this.classList.add('active');
-          
-          // Show corresponding content
-          document.getElementById(`tab-${tabId}`).classList.add('active');
+    (function () {
+      document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function () {
+            const tabId = this.getAttribute('data-tab');
+
+            // Remove active class from all tabs and content
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Show corresponding content
+            const panel = document.getElementById(`tab-${tabId}`);
+            if (panel) panel.classList.add('active');
+          });
         });
       });
-    });
+    })();
 
-    /* ring stroke animations and numeric geometry */
-    (function(){
-      function setRing(circleEl, r, percent){
-        if(!circleEl) return;
+    /* ring stroke animations and numeric geometry (unchanged) */
+    (function () {
+      function setRing(circleEl, r, percent) {
+        if (!circleEl) return;
         const circ = 2 * Math.PI * r;
         const filled = circ * (percent / 100);
         const dashArray = circ;
@@ -699,49 +775,47 @@
         circleEl.setAttribute('stroke-dashoffset', String(dashOffset));
       }
 
-      // Small helper to find rings by aria-label
       try {
         // compute percentages
         const pct280 = (280 / 8100) * 100; // 280M / 8.1B
         const pct1B = (1000 / 8100) * 100; // 1B / 8.1B = ~12.345679
 
-        // find small ring for 280M
+        // select rings by aria-label content
         const smallRings = Array.from(document.querySelectorAll('svg[aria-label*="280 million"] .ring'));
         smallRings.forEach(r => setRing(r, 46, pct280));
 
-        // big ring for 1B
         const bigRings = Array.from(document.querySelectorAll('svg[aria-label*="1 billion"] .ring'));
         bigRings.forEach(r => setRing(r, 70, pct1B));
 
-        // hollow percent rings (50,33,21,25) — select them and set offsets based on inner radii
+        // percent rings (explicit)
         const percentMap = [
-          {sel: 'svg[aria-label*="50 percent untreated"] .ring', r:44, pct:50},
-          {sel: 'svg[aria-label*="33 percent counties"] .ring', r:44, pct:33},
+          { sel: 'svg[aria-label*="50 percent untreated"] .ring', r: 44, pct: 50 },
+          { sel: 'svg[aria-label*="33 percent counties"] .ring', r: 44, pct: 33 }
         ];
-        percentMap.forEach(item=>{
+        percentMap.forEach(item => {
           const el = document.querySelector(item.sel);
-          if(el) setRing(el, item.r, item.pct);
+          if (el) setRing(el, item.r, item.pct);
         });
 
-        // for general hollow rings without unique aria-labels (we set based on displayed text)
-        document.querySelectorAll('.hollow').forEach(h=>{
+        // general hollow rings reading their text content
+        document.querySelectorAll('.hollow').forEach(h => {
           const txt = h.querySelector('text');
-          if(!txt) return;
+          if (!txt) return;
           const n = txt.textContent.trim();
           const num = parseFloat(n);
-          if(!isNaN(num)){
+          if (!isNaN(num)) {
             const ring = h.querySelector('.ring');
-            if(ring) setRing(ring, 44, num);
+            if (ring) setRing(ring, 44, num);
           }
         });
 
-        // animate rings: small scale pulse
-        document.querySelectorAll('.ring').forEach((el, i)=>{
+        // small pulse animation for rings
+        document.querySelectorAll('.ring').forEach((el, i) => {
           el.style.transition = 'stroke-dashoffset .9s cubic-bezier(.2,.9,.3,1), transform .6s ease';
-          setTimeout(()=> el.style.transform = 'scale(1.02)', 80 + i*40);
-          setTimeout(()=> el.style.transform = 'none', 700 + i*40);
+          setTimeout(() => el.style.transform = 'scale(1.02)', 80 + i * 40);
+          setTimeout(() => el.style.transform = 'none', 700 + i * 40);
         });
-      } catch(e){
+      } catch (e) {
         console.warn('ring setup error', e);
       }
     })();
